@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Modal, Notice, Plugin, PluginSettingTab, Setting } from 'obsidian';
+import { App, Editor, Plugin, PluginSettingTab, Setting } from 'obsidian';
 import * as showdown from 'showdown';
 
 interface MarkdownToHTMLSettings {
@@ -30,7 +30,8 @@ export default class MarkdownToHTML extends Plugin {
     }
 
     markdownToHTML(editor: Editor) {
-        const converter = new showdown.Converter();
+      console.log('GOT HERE')  
+      const converter = new showdown.Converter();
         converter.setFlavor('github');
         converter.setOption('ellipsis', false);
         let text = editor.getSelection();

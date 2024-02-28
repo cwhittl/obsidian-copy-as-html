@@ -1,11 +1,12 @@
 {
 	"name": "copy-as-html",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "This is a simple plugin that converts the selected markdown to HTML and copies it to the clipboard.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
 		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"buildProd": "rollup --config rollup.config.js --environment BUILD:production && cp main.js build/main.js && cp manifest.json build/manifest.json",
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [],
@@ -16,10 +17,14 @@
 		"@types/showdown": "^1.9.4",
 		"@typescript-eslint/eslint-plugin": "^5.2.0",
 		"@typescript-eslint/parser": "^5.2.0",
+		"@rollup/plugin-commonjs": "^18.0.0",
+		"@rollup/plugin-node-resolve": "^11.2.1",
+		"@rollup/plugin-typescript": "^8.2.1",
 		"builtin-modules": "^3.2.0",
 		"esbuild": "0.13.12",
 		"node-pandoc": "^0.3.0",
 		"obsidian": "^0.12.17",
+		"rollup": "^2.32.1",
 		"tslib": "2.3.1",
 		"typescript": "4.4.4"
 	},
